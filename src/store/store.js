@@ -3,8 +3,10 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
+import { recipeStore } from "./modules/recipes"
+
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {}
+  modules: {
+    recipeStore
+  }
 });
