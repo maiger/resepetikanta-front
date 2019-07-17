@@ -1,17 +1,19 @@
 <template>
   <div>
     <app-header></app-header>
-    This is the main dashboard
+    <app-recipe-list></app-recipe-list>
   </div>
 </template>
 
 <script>
-import Header from "./Header"
+import Header from "./Header";
+import RecipeList from "./RecipeList"
 
 export default {
   components: {
-    appHeader: Header
+    appHeader: Header,
+    appRecipeList: RecipeList
   }
-}
+};
 </script>
 

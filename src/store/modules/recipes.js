@@ -1,9 +1,11 @@
+import axios from "../../axios-config"
+
 export const recipeStore = {
   state: {
     recipes: [],
     activeRecipe: null
   },
-  mutation: {
+  mutations: {
     SET_RECIPES(state, recipes) {
       state.recipes = recipes;
     },
@@ -16,8 +18,15 @@ export const recipeStore = {
     },
   },
   actions: {
-    initRecipes({ commit }, recipes) {
-      commit("SET_RECIPES", recipes);
+    initRecipes({ commit }) {
+      axios
+      .get("/recipes")
+      .then(response => {
+        commit("SET_RECIPES", response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
     },
     setActiveRecipe({ commit }, recipe) {
       commit("SET_ACTIVE_RECIPE", recipe);
