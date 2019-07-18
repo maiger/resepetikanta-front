@@ -1,9 +1,9 @@
 <template>
   <div>
     <app-header></app-header>
-    <div v-if="activeRecipe" class="container recipe">
+    <div v-if="recipe" class="container recipe">
       <div class="recipe-title text-center">
-        <div>{{ activeRecipe.title }}</div>
+        <h2>{{ recipe.title }}</h2>
       </div>
       <div class="row">
         <div class="col-lg-6 col-sm-12 text-center recipe-img">
@@ -11,22 +11,24 @@
         </div>
         <div class="col-lg-6 col-sm-12 recipe-info">
           <div>Info:</div>
-          <div>Annoksia: {{ activeRecipe.servings }}</div>
-          <div>Vaikeus: {{ activeRecipe.difficulty }}</div>
-          <div>Valmistusaika: {{ activeRecipe.preptime }} min</div>
+          <div>Annoksia: {{ recipe.servings }}</div>
+          <div>Vaikeus: {{ recipe.difficulty }}</div>
+          <div>Valmistusaika: {{ recipe.preptime }} min</div>
+          <div>Tagit: {{ recipe.tags }}</div>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-6 col-sm-12 recipe-ingredients">
           <div>Ainekset:</div>
-          <div>{{ activeRecipe.ingredients }}</div>
+          <div>{{ recipe.ingredients }}</div>
         </div>
         <div class="col-lg-6 col-sm-12 recipe-instructions">
           <div>Ohjeet:</div>
-          <div>{{ activeRecipe.instructions }}</div>
+          <div>{{ recipe.instructions }}</div>
         </div>
       </div>
     </div>
+    <div class="text-center" v-else>Recipe not yet loaded or incorrect URL</div>
   </div>
 </template>
 
@@ -38,7 +40,7 @@ export default {
     appHeader: Header
   },
   computed: {
-    activeRecipe() {
+    recipe() {
       return this.$store.getters.activeRecipe;
     }
   },

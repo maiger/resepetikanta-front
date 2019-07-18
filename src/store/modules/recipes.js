@@ -37,6 +37,7 @@ export const recipeStore = {
           commit("SET_ACTIVE_RECIPE", response.data);
         })
         .catch(error => {
+          // TODO: Inform user if recipe is not found
           console.log(error);
         });
     },

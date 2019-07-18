@@ -60,6 +60,7 @@ export default {
   padding: 0;
   border-radius: 0;
   border: 0;
+  cursor: pointer;
 }
 .meat {
   background-color: #f78888;

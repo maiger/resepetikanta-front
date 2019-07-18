@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <app-recipe-list-item
-      class="col-lg-3 col-md-4 col-sm-12 recipe-card"
+      class="col-lg-3 col-md-6 col-sm-12 recipe-card"
       v-for="(recipe, index) in recipes"
       :recipe="recipe"
       :key="index"
