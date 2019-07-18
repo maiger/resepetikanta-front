@@ -1,6 +1,6 @@
 
 <template>
-  <b-card no-body class="recipe-card" :class="recipeStyle">
+  <b-card @click="gotoRecipe" no-body class="recipe-card" :class="recipeStyle">
     <b-card-img id="recipe-img" src="https://placekitten.com/360/240" alt="Resepti" top></b-card-img>
     <b-card-body>
       <b-card-title>{{recipe.title}}</b-card-title>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import router from "../router"
+
 export default {
   props: {
     recipe: Object
@@ -23,6 +25,11 @@ export default {
     return {
       recipeStyle: null
     };
+  },
+  methods: {
+    gotoRecipe() {
+      router.push("/recipe/" + this.recipe._id)
+    }
   },
   mounted() {
     // TODO: Do something smarter about this..

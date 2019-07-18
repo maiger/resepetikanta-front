@@ -20,16 +20,25 @@ export const recipeStore = {
   actions: {
     initRecipes({ commit }) {
       axios
-      .get("/recipes")
-      .then(response => {
-        commit("SET_RECIPES", response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+        .get("/recipes")
+        .then(response => {
+          commit("SET_RECIPES", response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
-    setActiveRecipe({ commit }, recipe) {
-      commit("SET_ACTIVE_RECIPE", recipe);
+    setActiveRecipe({ commit }, recipeID) {
+      // Reset activeRecipe before we get the new one
+      commit("SET_ACTIVE_RECIPE", null);
+      axios
+        .get("/recipes/" + recipeID)
+        .then(response => {
+          commit("SET_ACTIVE_RECIPE", response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
     clearRecipeData({ commit }) {
       commit("CLEAR_RECIPE_DATA")
