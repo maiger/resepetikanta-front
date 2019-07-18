@@ -4,9 +4,12 @@
     <b-card-img id="recipe-img" src="https://placekitten.com/360/240" alt="Resepti" top></b-card-img>
     <b-card-body>
       <b-card-title>{{recipe.title}}</b-card-title>
+      <b-card-text v-if="recipe.servings">Annokset: {{recipe.servings}}</b-card-text>
+      <b-card-text v-if="recipe.preptime">Valmistusaika: {{recipe.preptime}}min</b-card-text>
+      <b-card-text v-if="recipe.difficulty">Vaikeus: {{recipe.difficulty}}</b-card-text>
     </b-card-body>
     <b-card-footer>
-      <small class="text-muted">Tagit:</small>
+      <small class="text-muted">Tagit: {{recipe.tags}}</small>
     </b-card-footer>
   </b-card>
 </template>
@@ -23,8 +26,6 @@ export default {
   },
   mounted() {
     // TODO: Do something smarter about this..
-    const rnd = Math.floor(Math.random() * 4);
-    const types = ["meat", "chicken", "fish", "vegetable"]
     const style = {
       meat: false,
       chicken: false,
@@ -32,7 +33,15 @@ export default {
       vegetable: false
     };
 
-    style[types[rnd]] = true;
+    if (this.recipe.tags.includes("liha")) {
+      style.meat = true;
+    } else if (this.recipe.tags.includes("kana")) {
+      style.chicken = true;
+    } else if (this.recipe.tags.includes("kala")) {
+      style.fish = true;
+    } else if (this.recipe.tags.includes("kasvis")) {
+      style.vegetable = true;
+    }
 
     this.recipeStyle = style;
   }
@@ -50,7 +59,7 @@ export default {
 }
 
 .chicken {
-background-color: #f3d250;
+  background-color: #f3d250;
 }
 
 .fish {
