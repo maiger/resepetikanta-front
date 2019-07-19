@@ -1,21 +1,31 @@
-
 <template>
   <b-card @click="gotoRecipe" no-body class="recipe-card" :class="recipeStyle">
-    <b-card-img id="recipe-img" src="https://placekitten.com/360/240" alt="Resepti" top></b-card-img>
+    <b-card-img
+      id="recipe-img"
+      src="https://placekitten.com/360/240"
+      alt="Resepti"
+      top
+    ></b-card-img>
     <b-card-body>
-      <b-card-title>{{recipe.title}}</b-card-title>
-      <b-card-text v-if="recipe.servings">Annokset: {{recipe.servings}}</b-card-text>
-      <b-card-text v-if="recipe.preptime">Valmistusaika: {{recipe.preptime}}min</b-card-text>
-      <b-card-text v-if="recipe.difficulty">Vaikeus: {{recipe.difficulty}}</b-card-text>
+      <b-card-title>{{ recipe.title }}</b-card-title>
+      <b-card-text v-if="recipe.servings"
+        >Annokset: {{ recipe.servings }}</b-card-text
+      >
+      <b-card-text v-if="recipe.preptime"
+        >Valmistusaika: {{ recipe.preptime }}min</b-card-text
+      >
+      <b-card-text v-if="recipe.difficulty"
+        >Vaikeus: {{ recipe.difficulty }}</b-card-text
+      >
     </b-card-body>
     <b-card-footer>
-      <small class="text-muted">Tagit: {{recipe.tags}}</small>
+      <small class="text-muted">Tagit: {{ recipe.tags }}</small>
     </b-card-footer>
   </b-card>
 </template>
 
 <script>
-import router from "../router"
+import router from "../router";
 
 export default {
   props: {
@@ -28,7 +38,7 @@ export default {
   },
   methods: {
     gotoRecipe() {
-      router.push("/recipe/" + this.recipe._id)
+      router.push("/recipe/" + this.recipe._id);
     }
   },
   mounted() {

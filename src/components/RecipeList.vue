@@ -5,7 +5,8 @@
       v-for="(recipe, index) in recipes"
       :recipe="recipe"
       :key="index"
-    >{{recipe}}</app-recipe-list-item>
+      >{{ recipe }}</app-recipe-list-item
+    >
   </div>
 </template>
 
@@ -26,5 +27,3 @@ export default {
   }
 };
 </script>
-
-

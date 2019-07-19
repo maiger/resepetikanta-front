@@ -1,7 +1,9 @@
 <template>
   <div id="header">
     <b-navbar id="header-content" toggleable="lg" type="light" variant="info">
-      <router-link class="brand-text" to="/" tag="b-navbar-brand">Reseptikanta</router-link>
+      <router-link class="brand-text" to="/" tag="b-navbar-brand"
+        >Reseptikanta</router-link
+      >
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -10,7 +12,11 @@
         <!-- Search bar -->
         <b-navbar-nav class="ml-auto">
           <b-nav-form v-if="this.$route.path == '/'">
-            <b-form-input size="sm" class="mr-sm-2" placeholder="Hae"></b-form-input>
+            <b-form-input
+              size="sm"
+              class="mr-sm-2"
+              placeholder="Hae"
+            ></b-form-input>
           </b-nav-form>
 
           <!-- Create a new recipe -->
@@ -32,11 +38,11 @@
 </template>
 
 <style>
-  #header-content {
-    background-color: #ececec !important
-  }
+#header-content {
+  background-color: #ececec !important;
+}
 
-  .brand-text {
-    cursor: pointer;
-  }
+.brand-text {
+  cursor: pointer;
+}
 </style>

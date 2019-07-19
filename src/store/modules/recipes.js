@@ -1,4 +1,4 @@
-import axios from "../../axios-config"
+import axios from "../../axios-config";
 
 export const recipeStore = {
   state: {
@@ -15,7 +15,7 @@ export const recipeStore = {
     CLEAR_RECIPE_DATA(state) {
       state.recipes = [];
       state.activeRecipe = null;
-    },
+    }
   },
   actions: {
     initRecipes({ commit }) {
@@ -42,8 +42,8 @@ export const recipeStore = {
         });
     },
     clearRecipeData({ commit }) {
-      commit("CLEAR_RECIPE_DATA")
-    },
+      commit("CLEAR_RECIPE_DATA");
+    }
   },
   getters: {
     recipes: state => {
@@ -53,4 +53,4 @@ export const recipeStore = {
       return state.activeRecipe;
     }
   }
-}
+};
