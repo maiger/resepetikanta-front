@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-lg-8 col-sm-12">
             <b-form-group id="input-group-2" label="Raaka-aineet:" label-for="input-ingredients">
-              <b-form-textarea id="input-ingredients" v-model="recipe.ingredients" rows="10"></b-form-textarea>
+              <b-form-textarea id="input-ingredients" v-model="recipe.ingredients" rows="8"></b-form-textarea>
             </b-form-group>
           </div>
           <div class="col-lg-4 col-sm-12">
@@ -35,7 +35,7 @@
         </div>
 
         <b-form-group id="input-group43" label="Valmistusohjeet:" label-for="input-instructions">
-          <b-form-textarea id="input-instructions" v-model="recipe.instructions" rows="10"></b-form-textarea>
+          <b-form-textarea id="input-instructions" v-model="recipe.instructions" rows="5"></b-form-textarea>
         </b-form-group>
 
         <b-form-group id="input-group-5" label="Tagit:" label-for="input-tags">
@@ -51,6 +51,7 @@
 
 <script>
 import Header from "./Header";
+import { createRecipe } from "../queries/recipes"
 
 export default {
   data() {
@@ -71,9 +72,8 @@ export default {
   },
   methods: {
     onSubmit(evt) {
-      evt.preventDefault();
-      console.log("New recipe:");
-      console.log(this.recipe)
+      evt.preventDefault()
+      createRecipe(this.recipe)
     },
     onReset(evt) {
       evt.preventDefault();
