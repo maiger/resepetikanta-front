@@ -1,6 +1,30 @@
 // All database queries regarding reicpes are to be placed here
 import axios from "../axios-config";
 import store from "../store/store";
+import router from "../router"
+
+export function readRecipes() {
+  axios
+  .get("/recipes")
+  .then(response => {
+    store.dispatch("initRecipes", response.data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+}
+
+export function readRecipeByID(id) {
+  axios
+  .get("/recipes/" + id)
+  .then(response => {
+    store.dispatch("setActiveRecipe", response.data);
+  })
+  .catch(error => {
+    // TODO: Inform user if recipe is not found
+    console.log(error);
+  });
+}
 
 export function createRecipe(recipe) {
   // Validated recipe
@@ -14,7 +38,7 @@ export function createRecipe(recipe) {
     tags: null
   }
   // Validate recipe fields
-  if(!recipe.title) {
+  if (!recipe.title) {
     console.error("Recipe title required!")
     return
   }
@@ -23,10 +47,10 @@ export function createRecipe(recipe) {
   recipe.difficulty ? r.difficulty = parseInt(recipe.difficulty) : r.difficulty = null
   recipe.preptime ? r.preptime = parseInt(recipe.preptime) : r.preptime = null
   recipe.servings ? r.servings = parseInt(recipe.servings) : r.servings = null
-  
+
   // Split string by "," and trim excess whitespaces
   // Eg. "chicken, soup" => ["chicken", "soup"]
-  if(recipe.tags) {
+  if (recipe.tags) {
     r.tags = recipe.tags.split(",").map(tag => tag.trim())
   }
 
@@ -35,14 +59,19 @@ export function createRecipe(recipe) {
   axios
     .post("/recipes", data)
     .then(response => {
-      // TODO: After adding a recipe, fetch all recipes
-      // The added recipe could also just be added to the store
-      // to avoid this refetch.
-      // readRecipes();
       console.log("Recipe added!");
+      router.push("/")
     })
     .catch(error => {
       console.log("CreateRecipe | Error");
       console.log(error);
     });
+}
+
+export function updateRecipe(recipe) {
+
+}
+
+export function deleteRecipe(id) {
+
 }

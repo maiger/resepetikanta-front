@@ -38,6 +38,7 @@
 
 <script>
 import Header from "./Header";
+import { readRecipeByID } from "../queries/recipes"
 
 export default {
   components: {
@@ -49,7 +50,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("setActiveRecipe", this.$route.params.id);
+    readRecipeByID(this.$route.params.id);
   }
 };
 </script>

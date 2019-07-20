@@ -1,4 +1,5 @@
 import axios from "../../axios-config";
+import { readRecipes } from "../../queries/recipes"
 
 export const recipeStore = {
   state: {
@@ -18,28 +19,11 @@ export const recipeStore = {
     }
   },
   actions: {
-    initRecipes({ commit }) {
-      axios
-        .get("/recipes")
-        .then(response => {
-          commit("SET_RECIPES", response.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    initRecipes({ commit }, recipes) {
+      commit("SET_RECIPES", recipes);
     },
-    setActiveRecipe({ commit }, recipeID) {
-      // Reset activeRecipe before we get the new one
-      commit("SET_ACTIVE_RECIPE", null);
-      axios
-        .get("/recipes/" + recipeID)
-        .then(response => {
-          commit("SET_ACTIVE_RECIPE", response.data);
-        })
-        .catch(error => {
-          // TODO: Inform user if recipe is not found
-          console.log(error);
-        });
+    setActiveRecipe({ commit }, recipe) {
+      commit("SET_ACTIVE_RECIPE", recipe);
     },
     clearRecipeData({ commit }) {
       commit("CLEAR_RECIPE_DATA");

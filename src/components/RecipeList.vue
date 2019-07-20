@@ -12,6 +12,7 @@
 
 <script>
 import RecipeListItem from "./RecipeListItem";
+import { readRecipes } from "../queries/recipes"
 
 export default {
   components: {
@@ -23,7 +24,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("initRecipes");
+    readRecipes();
   }
 };
 </script>
