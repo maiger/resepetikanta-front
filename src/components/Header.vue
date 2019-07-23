@@ -15,17 +15,25 @@
 
           <!-- Create a new recipe -->
           <router-link to="/recipe/new" tag="b-nav-item">Uusi Resepti</router-link>
-          <router-link to="/login" tag="b-nav-item">Kirjaudu</router-link>
-          <router-link to="/signup" tag="b-nav-item">Rekisteröidy</router-link>
 
           <!-- User Options -->
+          <!-- Content depends if user is loggen in or not -->
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
-            <template slot="button-content">
-              <em>Vieras</em>
+            <template v-if="this.$store.getters.user == null" class="quest">
+              <template slot="button-content">
+                <em>Vieras</em>
+              </template>
+              <router-link to="/login" tag="b-dropdown-item">Kirjaudu</router-link>
+              <router-link to="/signup" tag="b-dropdown-item">Rekisteröidy</router-link>
             </template>
-            <b-dropdown-item href="#">Profiili</b-dropdown-item>
-            <b-dropdown-item href="#">Kirjaudu ulos</b-dropdown-item>
+            <template v-else class="member">
+              <template slot="button-content">
+                <em>Käyttäjä</em>
+              </template>
+              <router-link to="/" tag="b-dropdown-item">Profiili</router-link>
+              <router-link to="/" tag="b-dropdown-item">Kirjaudu ulos</router-link>
+            </template>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>

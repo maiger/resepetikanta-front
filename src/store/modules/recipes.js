@@ -1,6 +1,3 @@
-import axios from "../../axios-config";
-import { readRecipes } from "../../queries/recipes"
-
 export const recipeStore = {
   state: {
     recipes: [],
