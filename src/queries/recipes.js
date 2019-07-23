@@ -73,5 +73,15 @@ export function updateRecipe(recipe) {
 }
 
 export function deleteRecipe(id) {
-
+  console.log("Sending delete recipe to database");
+  axios
+    .delete("/recipes/" + id)
+    .then(response => {
+      console.log("DeleteRecipe | Recipe Deleted");
+      router.push("/")
+    })
+    .catch(error => {
+      console.log("Delete Project | Error");
+      console.log(error);
+    });
 }

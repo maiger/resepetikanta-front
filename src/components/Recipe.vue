@@ -7,11 +7,7 @@
       </div>
       <div class="row">
         <div class="col-lg-6 col-sm-12 text-center recipe-img">
-          <img
-            src="https://placekitten.com/360/240"
-            class="img-fluid"
-            alt="Reseptin kuva"
-          />
+          <img src="https://placekitten.com/360/240" class="img-fluid" alt="Reseptin kuva" />
         </div>
         <div class="col-lg-6 col-sm-12 recipe-info">
           <div>Info:</div>
@@ -31,6 +27,10 @@
           <div>{{ recipe.instructions }}</div>
         </div>
       </div>
+      <div class="buttons">
+        <button class="btn btn-primary float-right">Muokka</button>
+        <button @click.prevent="deleteRecipe" class="btn btn-danger float-right">Poista</button>
+      </div>
     </div>
     <div class="text-center" v-else>Recipe not yet loaded or incorrect URL</div>
   </div>
@@ -38,7 +38,7 @@
 
 <script>
 import Header from "./Header";
-import { readRecipeByID } from "../queries/recipes"
+import { readRecipeByID, deleteRecipe } from "../queries/recipes";
 
 export default {
   components: {
@@ -47,6 +47,13 @@ export default {
   computed: {
     recipe() {
       return this.$store.getters.activeRecipe;
+    }
+  },
+  methods: {
+    deleteRecipe() {
+      if (confirm("Haluatko varmasti poistaa reseptin: " + this.recipe.title)) {
+        deleteRecipe(this.recipe._id);
+      }
     }
   },
   mounted() {
