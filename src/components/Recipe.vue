@@ -1,6 +1,4 @@
 <template>
-  <div>
-    <app-header></app-header>
     <div v-if="recipe" class="container recipe">
       <div class="recipe-title text-center">
         <h2>{{ recipe.title }}</h2>
@@ -33,17 +31,12 @@
       </div>
     </div>
     <div class="text-center" v-else>Recipe not yet loaded or incorrect URL</div>
-  </div>
 </template>
 
 <script>
-import Header from "./Header";
 import { readRecipeByID, deleteRecipe } from "../queries/recipes";
 
 export default {
-  components: {
-    appHeader: Header
-  },
   computed: {
     recipe() {
       return this.$store.getters.activeRecipe;

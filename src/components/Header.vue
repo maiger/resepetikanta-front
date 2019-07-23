@@ -15,6 +15,8 @@
 
           <!-- Create a new recipe -->
           <router-link to="/recipe/new" tag="b-nav-item">Uusi Resepti</router-link>
+          <router-link to="/login" tag="b-nav-item">Kirjaudu</router-link>
+          <router-link to="/signup" tag="b-nav-item">Rekisteröidy</router-link>
 
           <!-- User Options -->
           <b-nav-item-dropdown right>

@@ -1,8 +1,10 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Dashboard from "./components/Dashboard.vue";
+import Signup from "./components/Signup.vue";
+import Login from "./components/Login.vue";
 import Recipe from "./components/Recipe.vue";
-import CreateRecipe from "./components/CreateRecipe.vue"
+import CreateRecipe from "./components/CreateRecipe.vue";
 
 Vue.use(Router);
 
@@ -14,6 +16,16 @@ export default new Router({
       path: "/",
       name: "Dashboard",
       component: Dashboard
+    },
+    {
+      path: "/signup",
+      name: "Signup",
+      component: Signup
+    },
+    {
+      path: "/login",
+      name: "Login",
+      component: Login
     },
     {
       path: "/about",
