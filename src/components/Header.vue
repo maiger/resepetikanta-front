@@ -20,7 +20,7 @@
           <!-- Content depends if user is loggen in or not -->
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
-            <template v-if="this.$store.getters.user == null" class="quest">
+            <template v-if="this.user == null" class="quest">
               <template slot="button-content">
                 <em>Vieras</em>
               </template>
@@ -29,10 +29,11 @@
             </template>
             <template v-else class="member">
               <template slot="button-content">
-                <em>Käyttäjä</em>
+                <em>{{this.user.username}}</em>
               </template>
               <router-link to="/" tag="b-dropdown-item">Profiili</router-link>
-              <router-link to="/" tag="b-dropdown-item">Kirjaudu ulos</router-link>
+              <!-- <router-link to="/" tag="b-dropdown-item">Kirjaudu ulos</router-link> -->
+              <b-dropdown-item @click="this.logout">Kirjaudu ulos</b-dropdown-item>
             </template>
           </b-nav-item-dropdown>
         </b-navbar-nav>
@@ -40,6 +41,24 @@
     </b-navbar>
   </div>
 </template>
+
+<script>
+import { logoutUser } from "../queries/user";
+
+export default {
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    }
+  },
+  methods: {
+    logout() {
+      logoutUser();
+    }
+  }
+};
+</script>
+
 
 <style>
 #header-content {

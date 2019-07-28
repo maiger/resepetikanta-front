@@ -8,7 +8,7 @@ export const userStore = {
     }
   },
   actions: {
-    setUser({commit}, user) {
+    setUser({ commit }, user) {
       commit("SET_USER", user)
     }
   },
