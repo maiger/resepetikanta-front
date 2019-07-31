@@ -22,3 +22,17 @@ export function logoutUser() {
   store.dispatch("setUser", null)
   router.push("/")
 }
+
+export function signupUser(user) {
+  let data = user;
+  axios
+    .post("/user", data)
+    .then(response => {
+      console.log("User signed up!");
+      loginUser(user);
+    })
+    .catch(error => {
+      console.log("signupUser | Error");
+      console.log(error);
+    });
+}

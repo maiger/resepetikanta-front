@@ -30,14 +30,9 @@ export default {
   },
   methods: {
     onSubmit() {
-      const formData = {
+      loginUser({
         username: this.username,
         password: this.password
-      };
-      console.log(formData);
-      loginUser({
-        username: formData.username,
-        password: formData.password
       });
     }
   }
