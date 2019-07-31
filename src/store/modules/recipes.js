@@ -11,7 +11,7 @@ export const recipeStore = {
       state.activeRecipe = recipe;
     },
     CLEAR_RECIPE_DATA(state) {
-      state.recipes = [];
+      // state.recipes = [];
       state.activeRecipe = null;
     }
   },

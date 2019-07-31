@@ -7,10 +7,14 @@
 
 <script>
 import Header from "./components/Header";
+import { tryAutoLogin } from "./queries/user"
 
 export default {
   components: {
     appHeader: Header
+  },
+  created() {
+    tryAutoLogin()
   }
 };
 </script>

@@ -4,6 +4,13 @@ export const userStore = {
   },
   mutations: {
     SET_USER(state, user) {
+      // User has:
+      // _id
+      // username
+      // role
+      // token
+      // expiresIn
+      // createdDate
       state.user = user;
     }
   },
